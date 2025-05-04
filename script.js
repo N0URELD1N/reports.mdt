@@ -76,3 +76,34 @@ function deleteReport(index) {
         alert("رمز غير صحيح. لا يمكن الحذف.");
     }
 }
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const reportsContainer = document.getElementById("reports-container");
+    const reports = JSON.parse(localStorage.getItem("mdtReports")) || [];
+
+    if (reports.length === 0) {
+        reportsContainer.innerHTML = "<p>لا توجد تقارير حتى الآن.</p>";
+        return;
+    }
+
+    reports.forEach((report, index) => {
+        const reportDiv = document.createElement("div");
+        reportDiv.className = "report";
+        reportDiv.innerHTML = `
+            <h3>الاسم: ${report.personName}</h3>
+            <p>مقدم البلاغ: ${report.reporterName}</p>
+            <p>حالة المهمة: ${report.missionStatus}</p>
+            <p>نوع الحالة: ${report.caseType}</p>
+            <p>الرمز الدولي: ${report.personCode}</p>
+            <p>معلومات إضافية: ${report.additionalInfo || "لا يوجد"}</p>
+            ${report.image ? `<img src="${report.image}" alt="صورة الشخص" width="100">` : ""}
+            <hr>
+        `;
+        reportsContainer.appendChild(reportDiv);
+    });
+});

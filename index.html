@@ -31,6 +31,16 @@
     <div id="reportList"></div>
   </div>
 
+
+  <div class="section">
+  <label>رمز حذف السجلات:</label>
+  <input type="password" id="deleteCode" placeholder="ادخل الرمز السري">
+  <button onclick="deleteReports()">حذف جميع السجلات</button>
+  <p id="deleteMsg" style="color: red; margin-top: 10px;"></p>
+</div>
+
+  
+
   <script>
     function renderReports() {
       const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");

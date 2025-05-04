@@ -60,3 +60,14 @@ button:hover {
   color: #f1c40f;
   font-weight: bold;
 }
+
+
+.report {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px; /* مسافة بين كل تقرير */
+    border: 1px solid #ccc; /* إطار خفيف */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* ظل بسيط */
+}
+

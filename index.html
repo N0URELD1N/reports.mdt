@@ -74,11 +74,15 @@ document.addEventListener("click", function (e) {
           <strong>معلومات إضافية:</strong> ${r.additionalInfo || 'لا توجد'}<br>
           ${r.imageData ? `<img src="${r.imageData}" alt="صورة الشخص">` : ''}
           
-<button class="delete-single" data-index="${index}">حذف هذا التقرير</button>
+
           
         </div>
       `).join('') || "<p>لا توجد تقارير تطابق البحث.</p>";
     }
+
+    
+<button class="delete-single" data-index="${index}">حذف هذا التقرير</button>
+
 
 
     document.addEventListener("DOMContentLoaded", renderReports);

@@ -43,29 +43,47 @@
 
   <script>
     function renderReports() {
-      const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
-      const search = document.getElementById("searchInput").value.trim().toLowerCase();
-      const list = document.getElementById("reportList");
+    const reportsContainer = document.getElementById("reports-container");
+    const reports = JSON.parse(localStorage.getItem("mdtReports")) || [];
 
-      const filtered = reports.filter(r => r.personName.toLowerCase().includes(search));
+    reportsContainer.innerHTML = "";
 
-
-      
-function deleteReports() {
-  const code = document.getElementById("deleteCode").value.trim();
-  const msg = document.getElementById("deleteMsg");
-
-  if (code === "OTRP_LSPD_S2") {
-    if (confirm("هل أنت متأكد من حذف جميع السجلات؟ هذا الإجراء لا يمكن التراجع عنه.")) {
-      localStorage.removeItem("mdtReports");
-      msg.style.color = "green";
-      msg.textContent = "تم حذف جميع السجلات بنجاح.";
-      renderReports();
+    if (reports.length === 0) {
+        reportsContainer.innerHTML = "<p>لا توجد تقارير.</p>";
+        return;
     }
-  } else {
-    msg.style.color = "red";
-    msg.textContent = "رمز الحذف غير صحيح.";
-  }
+
+    reports.forEach((report, index) => {
+        const reportDiv = document.createElement("div");
+        reportDiv.className = "report";
+        reportDiv.innerHTML = `
+            <h3>الاسم: ${report.personName}</h3>
+            <p>مقدم البلاغ: ${report.reporterName}</p>
+            <p>حالة المهمة: ${report.missionStatus}</p>
+            <p>نوع الحالة: ${report.caseType}</p>
+            <p>الرمز الدولي: ${report.personCode}</p>
+            <p>معلومات إضافية: ${report.additionalInfo || "لا يوجد"}</p>
+            ${report.image ? `<img src="${report.image}" alt="صورة الشخص" width="100">` : ""}
+        `;
+        reportsContainer.appendChild(reportDiv);
+    });
+
+    // <-- هنا تضيف زر حذف السجلات -->
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "حذف جميع التقارير";
+    deleteBtn.onclick = function () {
+        const code = prompt("أدخل الرمز السري لحذف جميع التقارير:");
+        if (code === "OTRP_LSPD_S2") {
+            localStorage.removeItem("mdtReports");
+            alert("تم حذف جميع التقارير.");
+            location.reload();
+        } else {
+            alert("رمز خاطئ، لا يمكن الحذف.");
+        }
+    };
+
+    // إضافة الزر أسفل القائمة
+    reportsContainer.appendChild(deleteBtn);
 }
 
 

@@ -58,4 +58,3 @@ function submitReport() {
     document.getElementById("confirmation").textContent = "تم إرسال التقرير بنجاح!";
   }
 }
-

@@ -6,9 +6,6 @@ function toggleCustomType() {
 
 function submitReport() {
   const reporterName = document.getElementById("reporterName").value.trim();
-
-
-
   const missionStatus = document.getElementById("missionStatus").value;
   const caseType = document.getElementById("caseType").value;
   const customType = document.getElementById("customCaseType").value.trim();

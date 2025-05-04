@@ -32,12 +32,7 @@
   </div>
 
 
-  <div class="section">
-  <label>رمز حذف السجلات:</label>
-  <input type="password" id="deleteCode" placeholder="ادخل الرمز السري">
-  <button onclick="deleteReports()">حذف جميع السجلات</button>
-  <p id="deleteMsg" style="color: red; margin-top: 10px;"></p>
-</div>
+
 
   
 
@@ -68,23 +63,7 @@
         reportsContainer.appendChild(reportDiv);
     });
 
-    // <-- هنا تضيف زر حذف السجلات -->
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "حذف جميع التقارير";
-    deleteBtn.onclick = function () {
-        const code = prompt("أدخل الرمز السري لحذف جميع التقارير:");
-        if (code === "OTRP_LSPD_S2") {
-            localStorage.removeItem("mdtReports");
-            alert("تم حذف جميع التقارير.");
-            location.reload();
-        } else {
-            alert("رمز خاطئ، لا يمكن الحذف.");
-        }
-    };
-
-    // إضافة الزر أسفل القائمة
-    reportsContainer.appendChild(deleteBtn);
-}
+   
 
 
       list.innerHTML = filtered.map(r => `

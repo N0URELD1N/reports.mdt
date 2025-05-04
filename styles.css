@@ -1,6 +1,6 @@
 body {
   background-color: #1a1a1a;
-  color: #f1c40f;
+  color: #e0e0e0;
   font-family: Tahoma, sans-serif;
   padding: 20px;
   direction: rtl;
@@ -12,12 +12,12 @@ body {
   background-color: #222;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 0 10px #f1c40f;
+  box-shadow: 0 0 10px #0f0;
 }
 
 h1 {
   text-align: center;
-  color: #f1c40f;
+  color: #0f0;
 }
 
 .section {
@@ -27,7 +27,7 @@ h1 {
 label {
   display: block;
   margin-bottom: 5px;
-  color: #f1c40f;
+  color: #80ff80;
 }
 
 input[type="text"], textarea, select {
@@ -42,7 +42,7 @@ input[type="text"], textarea, select {
 button {
   width: 100%;
   padding: 12px;
-  background-color: #f1c40f;
+  background-color: #0a0;
   color: white;
   border: none;
   border-radius: 5px;
@@ -51,12 +51,12 @@ button {
 }
 
 button:hover {
-  background-color: #f1c40f;
+  background-color: #0f0;
 }
 
 .confirmation {
   margin-top: 20px;
   text-align: center;
-  color: #f1c40f;
+  color: #0f0;
   font-weight: bold;
 }

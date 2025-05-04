@@ -59,6 +59,28 @@
       `).join('') || "<p>لا توجد تقارير تطابق البحث.</p>";
     }
 
+
+    
+
+document.addEventListener("DOMContentLoaded", function () {
+    renderReports();
+
+    const deleteBtn = document.getElementById("deleteReportsBtn");
+    deleteBtn.addEventListener("click", function () {
+        const pass = prompt("أدخل الرمز السري لحذف التقارير:");
+        if (pass === "OTRP_LSPD_S2") {
+            localStorage.removeItem("mdtReports");
+            alert("تم حذف جميع التقارير.");
+            location.reload();
+        } else {
+            alert("رمز خاطئ. لا يمكن الحذف.");
+        }
+    });
+});
+    
+
+    
+
     document.addEventListener("DOMContentLoaded", renderReports);
   </script>
 </body>

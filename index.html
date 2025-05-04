@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>سجل تقارير MDT</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="style.css"/>
   <style>
     .report {
       border-bottom: 1px solid #444;
@@ -31,40 +31,13 @@
     <div id="reportList"></div>
   </div>
 
-
-
-
-  
-
   <script>
     function renderReports() {
-    const reportsContainer = document.getElementById("reports-container");
-    const reports = JSON.parse(localStorage.getItem("mdtReports")) || [];
+      const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
+      const search = document.getElementById("searchInput").value.trim().toLowerCase();
+      const list = document.getElementById("reportList");
 
-    reportsContainer.innerHTML = "";
-
-    if (reports.length === 0) {
-        reportsContainer.innerHTML = "<p>لا توجد تقارير.</p>";
-        return;
-    }
-
-    reports.forEach((report, index) => {
-        const reportDiv = document.createElement("div");
-        reportDiv.className = "report";
-        reportDiv.innerHTML = `
-            <h3>الاسم: ${report.personName}</h3>
-            <p>مقدم البلاغ: ${report.reporterName}</p>
-            <p>حالة المهمة: ${report.missionStatus}</p>
-            <p>نوع الحالة: ${report.caseType}</p>
-            <p>الرمز الدولي: ${report.personCode}</p>
-            <p>معلومات إضافية: ${report.additionalInfo || "لا يوجد"}</p>
-            ${report.image ? `<img src="${report.image}" alt="صورة الشخص" width="100">` : ""}
-        `;
-        reportsContainer.appendChild(reportDiv);
-    });
-
-   
-
+      const filtered = reports.filter(r => r.personName.toLowerCase().includes(search));
 
       list.innerHTML = filtered.map(r => `
         <div class="report">

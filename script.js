@@ -63,19 +63,3 @@ function submitReport() {
 }
 
 
-
-// بعد renderReports();
-document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("delete-single")) {
-        const index = e.target.getAttribute("data-index");
-        const pass = prompt("أدخل الرمز السري لحذف التقرير:");
-        if (pass === "3112.OT") {
-            const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
-            reports.splice(index, 1); // حذف التقرير من المصفوفة
-            localStorage.setItem("mdtReports", JSON.stringify(reports)); // تحديث
-            renderReports(); // إعادة عرض التقارير
-        } else {
-            alert("رمز خاطئ، لم يتم الحذف.");
-        }
-    }
-});

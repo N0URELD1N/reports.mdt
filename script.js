@@ -59,20 +59,3 @@ function submitReport() {
   }
 }
 
-
-function deleteReports() {
-  const code = document.getElementById("deleteCode").value.trim();
-  const msg = document.getElementById("deleteMsg");
-
-  if (code === "OTRP_LSPD_S2") {
-    if (confirm("هل أنت متأكد من حذف جميع السجلات؟ هذا الإجراء لا يمكن التراجع عنه.")) {
-      localStorage.removeItem("mdtReports");
-      msg.style.color = "green";
-      msg.textContent = "تم حذف جميع السجلات بنجاح.";
-      renderReports();
-    }
-  } else {
-    msg.style.color = "red";
-    msg.textContent = "رمز الحذف غير صحيح.";
-  }
-}

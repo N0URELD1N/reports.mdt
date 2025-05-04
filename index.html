@@ -42,24 +42,7 @@
  
       const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
       const search = document.getElementById("searchInput").value.trim().toLowerCase();
-      const list = document.getElementById("reportList");
-
-
-document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("delete-single")) {
-        const index = e.target.getAttribute("data-index");
-        const pass = prompt("أدخل الرمز السري لحذف التقرير:");
-        if (pass === "3112") {
-            const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
-            reports.splice(index, 1); // حذف التقرير من المصفوفة
-            localStorage.setItem("mdtReports", JSON.stringify(reports)); // تحديث
-            renderReports(); // إعادة عرض التقارير
-        } else {
-            alert("رمز خاطئ، لم يتم الحذف.");
-        }
-    }
-});
-  
+      const list = document.getElementById("reportList");  
 
       const filtered = reports.filter(r => r.personName.toLowerCase().includes(search));
 
@@ -73,7 +56,7 @@ document.addEventListener("click", function (e) {
           <strong>معلومات إضافية:</strong> ${r.additionalInfo || 'لا توجد'}<br>
           ${r.imageData ? `<img src="${r.imageData}" alt="صورة الشخص">` : ''}
           
-<button class="delete-single" data-index="${index}">حذف هذا التقرير</button>
+
           
         </div>
       `).join('') || "<p>لا توجد تقارير تطابق البحث.</p>";

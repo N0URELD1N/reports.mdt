@@ -61,3 +61,18 @@ function submitReport() {
     document.getElementById("confirmation").textContent = "تم إرسال التقرير بنجاح!";
   }
 }
+
+
+function deleteReport(index) {
+    const code = prompt("أدخل الرمز السري لحذف التقرير:");
+
+    if (code === "3112") {
+        const reports = JSON.parse(localStorage.getItem("mdtReports")) || [];
+        reports.splice(index, 1); // حذف التقرير من المصفوفة
+        localStorage.setItem("mdtReports", JSON.stringify(reports)); // تحديث التخزين
+        alert("تم حذف التقرير بنجاح.");
+        location.reload(); // تحديث الصفحة لعرض التغييرات
+    } else {
+        alert("رمز غير صحيح. لا يمكن الحذف.");
+    }
+}

@@ -63,7 +63,7 @@ button:hover {
 
 
 .report {
-    background-color: #444;
+    background-color: gray;
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px; /* مسافة بين كل تقرير */

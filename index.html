@@ -54,8 +54,7 @@
           <strong>اسم الشخص:</strong> ${r.personName}<br>
           <strong>معلومات إضافية:</strong> ${r.additionalInfo || 'لا توجد'}<br>
           ${r.imageData ? `<img src="${r.imageData}" alt="صورة الشخص">` : ''}
-
-<button id="deleteReportsBtn"> حذف التقرير </button>
+<button class="delete-single" data-index="${index}">حذف هذا التقرير</button>
           
         </div>
       `).join('') || "<p>لا توجد تقارير تطابق البحث.</p>";

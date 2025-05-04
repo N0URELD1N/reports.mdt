@@ -1,63 +1,62 @@
-function toggleCustomType() {
-  const caseType = document.getElementById("caseType").value;
-  const customField = document.getElementById("customCaseType");
-  customField.style.display = (caseType === "آخر") ? "block" : "none";
+body {
+  background-color: #1a1a1a;
+  color: #f1c40f;
+  font-family: Tahoma, sans-serif;
+  padding: 20px;
+  direction: rtl;
 }
 
-function submitReport() {
-  const reporterName = document.getElementById("reporterName").value.trim();
+.container {
+  max-width: 700px;
+  margin: auto;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #f1c40f;
+}
 
+h1 {
+  text-align: center;
+  color: #f1c40f;
+}
 
+.section {
+  margin-bottom: 15px;
+}
 
-  const missionStatus = document.getElementById("missionStatus").value;
-  const caseType = document.getElementById("caseType").value;
-  const customType = document.getElementById("customCaseType").value.trim();
-  const personName = document.getElementById("personName").value.trim();
-  const additionalInfo = document.getElementById("additionalInfo").value.trim();
-  const imageInput = document.getElementById("personImage");
-  const timestamp = new Date().toLocaleString('ar-EG', { hour12: false });
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #f1c40f;
+}
 
-  const reader = new FileReader();
-  reader.onload = function () {
-    const imageData = reader.result;
+input[type="text"], textarea, select {
+  width: 100%;
+  padding: 10px;
+  background-color: #2a2a2a;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 5px;
+}
 
-    const finalCaseType = (caseType === "آخر") ? customType : caseType;
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #f1c40f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background 0.3s;
+}
 
-    const report = {
-      reporterName,
-      missionStatus,
-      caseType: finalCaseType,
-      personName,
-      additionalInfo,
-      imageData,
-      timestamp
-    };
+button:hover {
+  background-color: #f1c40f;
+}
 
-    const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
-    reports.unshift(report);
-    localStorage.setItem("mdtReports", JSON.stringify(reports));
-
-    document.getElementById("confirmation").textContent = "تم إرسال التقرير بنجاح!";
-  };
-
-  if (imageInput.files.length > 0) {
-    reader.readAsDataURL(imageInput.files[0]);
-  } else {
-    // No image provided
-    const report = {
-      reporterName,
-      missionStatus,
-      caseType: (caseType === "آخر") ? customType : caseType,
-      personName,
-      additionalInfo,
-      imageData: null,
-      timestamp
-    };
-
-    const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
-    reports.unshift(report);
-    localStorage.setItem("mdtReports", JSON.stringify(reports));
-
-    document.getElementById("confirmation").textContent = "تم إرسال التقرير بنجاح!";
-  }
+.confirmation {
+  margin-top: 20px;
+  text-align: center;
+  color: #f1c40f;
+  font-weight: bold;
 }

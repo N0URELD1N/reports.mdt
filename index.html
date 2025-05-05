@@ -55,9 +55,6 @@
           <strong>اسم الشخص:</strong> ${r.personName}<br>
           <strong>معلومات إضافية:</strong> ${r.additionalInfo || 'لا توجد'}<br>
           ${r.imageData ? `<img src="${r.imageData}" alt="صورة الشخص">` : ''}
-          
-
-          
         </div>
       `).join('') || "<p>لا توجد تقارير تطابق البحث.</p>";
     }

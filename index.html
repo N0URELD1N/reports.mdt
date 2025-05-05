@@ -52,16 +52,15 @@
 
       const filtered = reports.filter(r => r.personName.toLowerCase().includes(search));
 
-      list.innerHTML = filtered.map(r => `
-        <div class="report">
-          <strong>الوقت:</strong> ${r.timestamp}<br>
-          <strong>المُبلّغ:</strong> ${r.reporterName}<br>
-          <strong>المُبلّغ:</strong> ${r.reportercode}<br>
-          <strong>حالة المهمة:</strong> ${r.missionStatus}<br>
-          <strong>نوع الحالة:</strong> ${r.caseType}<br>
-          <strong>اسم الشخص:</strong> ${r.personName}<br>
-
-
+      <h3>الاسم: ${report.personName}</h3>
+            <p> اسم العسكري: ${report.reporterName}</p>
+            <p>حالة المهمة: ${report.missionStatus}</p>
+            <p>نوع الحالة: ${report.caseType}</p>
+            <p>اسم المجرم: ${report.personName}</p>
+            <p>معلومات إضافية: ${report.additionalInfo || "لا يوجد"}</p>
+            ${report.image ? `<img src="${report.image}" alt="صورة الشخص" width="100">` : ""}
+        `;
+        reportsContainer.appendChild(reportDiv);
 
 
           <strong>معلومات إضافية:</strong> ${r.additionalInfo || 'لا توجد'}<br>

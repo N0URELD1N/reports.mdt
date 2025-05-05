@@ -63,3 +63,13 @@ function submitReport() {
 }
 
 
+document.getElementById("deleteReportsBtn").addEventListener("click", function () {
+    const pass = prompt("أدخل الرمز السري لحذف التقارير:");
+    if (pass === "OTRP_LSPD_S2") {
+        localStorage.removeItem("mdtReports");
+        alert("تم حذف جميع التقارير.");
+        location.reload();
+    } else {
+        alert("رمز خاطئ. لا يمكن الحذف.");
+    }
+});

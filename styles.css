@@ -63,11 +63,34 @@ button:hover {
 
 
 .report {
-    background-color: #1a1a1a;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px; /* مسافة بين كل تقرير */
-    border: 1px solid #ccc; /* إطار خفيف */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* ظل بسيط */
+    background-color: #1b263b;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.report:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.report img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 15px;
+}
+
+.report .info {
+    flex-grow: 1;
+    text-align: right;
+}

@@ -46,46 +46,17 @@
 
       const filtered = reports.filter(r => r.personName.toLowerCase().includes(search));
 
-      function renderReports() {
-    const reportsContainer = document.getElementById("reports-container");
-    reportsContainer.innerHTML = "";
-    const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
+      list.innerHTML = filtered.map(r => `
+        <div class="report">
+          <strong>الوقت:</strong> ${r.timestamp}<br>
+          <strong>اسم العسكري:</strong> ${r.reporterName}<br>
+          <strong>حالة المهمة:</strong> ${r.missionStatus}<br>
+          <strong>نوع الحالة:</strong> ${r.caseType}<br>
+          <strong>اسم الشخص:</strong> ${r.personName}<br>
+          <strong>معلومات إضافية:</strong> ${r.additionalInfo || 'لا توجد'}<br>
+          ${r.imageData ? `<img src="${r.imageData}" alt="صورة الشخص">` : ''}
+      
 
-    reports.forEach((report, index) => {
-        const reportDiv = document.createElement("div");
-        reportDiv.className = "report";
-        reportDiv.innerHTML = `
-            <img src="${report.image || 'https://via.placeholder.com/80'}" alt="صورة الشخص">
-            <div class="info">
-                <p><strong>الاسم:</strong> ${report.personName}</p>
-                <p><strong>مقدم:</strong> ${report.reporterName}</p>
-                <p><strong>حالة المهمة:</strong> ${report.missionStatus}</p>
-                <p><strong>نوع الحالة:</strong> ${report.caseType}</p>
-                <p><strong>الرمز الدولي:</strong> ${report.personCode}</p>
-                <p><strong>معلومات إضافية:</strong> ${report.additionalInfo || "لا يوجد"}</p>
-                <button class="delete-single" data-index="${index}">حذف هذا التقرير</button>
-            </div>
-        `;
-        reportsContainer.appendChild(reportDiv);
-    });
-}
-
-document.addEventListener("DOMContentLoaded", renderReports);
-
-document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("delete-single")) {
-        const index = e.target.getAttribute("data-index");
-        const pass = prompt("أدخل الرمز السري لحذف التقرير:");
-        if (pass === "3112.MDT") {
-            const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
-            reports.splice(index, 1);
-            localStorage.setItem("mdtReports", JSON.stringify(reports));
-            renderReports();
-        } else {
-            alert("رمز خاطئ، لم يتم الحذف.");
-        }
-    }
-});
       `).join('') || "<p>لا توجد تقارير تطابق البحث.</p>";
     }
 

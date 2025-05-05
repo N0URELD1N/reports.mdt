@@ -82,14 +82,13 @@ body {
     background-color: #1b263b;
     padding: 20px;
     margin-bottom: 20px;
-    border: 2px solid white; /* حافة بيضاء */
-    border-radius: 15px; /* انسيابية الزوايا */
+    border: 2px solid white;
+    border-radius: 15px;
     width: 90%;
     max-width: 700px;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); /* ظل خفيف أبيض */
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
     display: flex;
-  flex-direction: row;
-    flex-direction: column;
+    flex-direction: column; /* فقط واحدة وصحيحة */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 

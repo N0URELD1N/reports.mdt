@@ -88,6 +88,7 @@ body {
     max-width: 700px;
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); /* ظل خفيف أبيض */
     display: flex;
+  flex-direction: row;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
